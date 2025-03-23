@@ -6,7 +6,7 @@ class Fmsh < Formula
   desc "File Management Shell"
   homepage "https://github.com/Agent-Hellboy/fmsh"
   version "0.1.4"
-  license "GPL-3.0-only" 
+  license "GPL-3.0-only"
 
   on_macos do
     on_intel do
