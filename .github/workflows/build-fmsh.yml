@@ -19,9 +19,15 @@ jobs:
 
       - name: Update Homebrew & Tap
         run: brew update
+      
+      - name: Tap
+        run: brew tap agent-hellboy/agent-hellboy-formula
+
+      - name: Install fmsh
+        run: brew install agent-hellboy/agent-hellboy-formula/fmsh
 
       - name: Brew Audit
-        run: brew audit --strict "fmsh.rb"
+        run: brew audit --strict agent-hellboy/agent-hellboy-formula/fmsh
 
       - name: Brew Style
-        run: brew style "fmsh.rb"
+        run: brew style agent-hellboy/agent-hellboy-formula/fmsh
