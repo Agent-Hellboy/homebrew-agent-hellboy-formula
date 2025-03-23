@@ -17,6 +17,9 @@ jobs:
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+      - name: Install Dependencies
+        run: brew install cmake libimobiledevice opencv
+
       - name: Update Homebrew & Tap
         run: brew update
 
