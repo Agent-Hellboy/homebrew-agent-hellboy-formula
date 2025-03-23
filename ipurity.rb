@@ -1,8 +1,8 @@
 class Ipurity < Formula
   desc "NSFW content detector for iOS devices"
   homepage "https://github.com/Agent-Hellboy/iPurity"
-  url "https://github.com/Agent-Hellboy/iPurity/releases/download/v1.0.1/ipurity-v1.0.1.tar.gz"
-  sha256 "aa97444b1bcdbeddf670101febcf50ab168c576f6bc4e5ad5f39cdbf41888032"
+  url "https://github.com/Agent-Hellboy/iPurity/releases/download/v1.0.5/ipurity-v1.0.5.tar.gz"
+  sha256 "b0a750128087caa5f767fc7b19b4b51417dbc8a9e0cf6f6a095dff095430a129"
   license "MIT"
 
   depends_on "cmake" => :build
