@@ -5,24 +5,28 @@ class Ipurity < Formula
   sha256 "aa97444b1bcdbeddf670101febcf50ab168c576f6bc4e5ad5f39cdbf41888032"
   license "MIT"
 
+  depends_on "cmake" => :build
   depends_on "libimobiledevice"
   depends_on "opencv"
-  depends_on "pkg-config" => :build  # if needed for ./configure checks
 
   def install
-    # Run the project's configure script
+    # Run the project's configure script from the root directory.
     system "./configure", *std_configure_args
 
-    # Then compile (adjust if your project uses a different build command)
-    system "make"
+    # Create a build directory and run CMake from there.
+    mkdir "build" do
+      system "cmake", "..", *std_cmake_args
+      system "cmake", "--build", "."
+      system "cmake", "--install", "."
+    end
 
-    # install "ipurity".
-    bin.install "ipurity"
+    # If the CMake install doesn't create versionless symlinks for your library,
+    # you can manually create them here. For example:
+    # lib.install_symlink "libipurity.dylib.1.0" => "libipurity.dylib"
   end
 
   test do
-    # Simple test: run the binary and check output or exit code
-    # Adjust as appropriate for your project
+    # Simple test: run the binary and check its version output.
     assert_match "iPurity version", shell_output("#{bin}/ipurity --version")
   end
 end

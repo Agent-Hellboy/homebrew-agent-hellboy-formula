@@ -1,15 +1,14 @@
-name: Homebrew Audit & Style
+name: Homebrew Audit & Style - ipurity
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   audit-and-style:
     runs-on: macos-latest
-
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -19,15 +18,10 @@ jobs:
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
       - name: Update Homebrew & Tap
-        run: |
-          brew update
+        run: brew update
 
       - name: Brew Audit
-        run: |
-          # Replace "mytool.rb" with the path or name of your formula file
-          brew audit --strict ./mytool.rb
+        run: brew audit --strict "ipurity.rb"
 
       - name: Brew Style
-        run: |
-          # Check Ruby style for the same formula
-          brew style ./mytool.rb
+        run: brew style "ipurity.rb"

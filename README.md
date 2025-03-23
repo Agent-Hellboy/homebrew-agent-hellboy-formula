@@ -1,4 +1,5 @@
-# A centralised repo of my homebrew formulas
+# A Centralised Repo of My Homebrew Formulas
 
-[![Build](https://github.com/Agent-Hellboy/homebrew-agent-hellboy-formula/actions/workflows/build.yml/badge.svg)](https://github.com/Agent-Hellboy/homebrew-agent-hellboy-formula/actions/workflows/build.yml)
+[![Build fmsh](https://github.com/Agent-Hellboy/homebrew-agent-hellboy-formula/actions/workflows/build-fmsh.yml/badge.svg)](https://github.com/Agent-Hellboy/homebrew-agent-hellboy-formula/actions/workflows/build-fmsh.yml)
 
+[![Build ipurity](https://github.com/Agent-Hellboy/homebrew-agent-hellboy-formula/actions/workflows/build-ipurity.yml/badge.svg)](https://github.com/Agent-Hellboy/homebrew-agent-hellboy-formula/actions/workflows/build-ipurity.yml)
