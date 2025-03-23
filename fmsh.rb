@@ -6,7 +6,7 @@ class Fmsh < Formula
   desc "File Management Shell"
   homepage "https://github.com/Agent-Hellboy/fmsh"
   version "0.1.4"
-  license "GPL-3.0"
+  license "GPL-3.0-only"  # Changed from "GPL-3.0" to "GPL-3.0-only"
 
   on_macos do
     on_intel do
@@ -48,5 +48,10 @@ class Fmsh < Formula
         end
       end
     end
+  end
+
+  test do
+    # Simple test: verify that fmsh returns its version
+    assert_match "fmsh", shell_output("#{bin}/fmsh --version")
   end
 end
