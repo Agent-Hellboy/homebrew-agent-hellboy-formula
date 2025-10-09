@@ -1,0 +1,33 @@
+name: Homebrew Audit & Style - echo-mail
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  audit-and-style:
+    runs-on: macos-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Install Homebrew
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+      - name: Update Homebrew & Tap
+        run: brew update
+      
+      - name: Tap
+        run: brew tap agent-hellboy/agent-hellboy-formula
+
+      - name: Install echo-mail
+        run: brew install agent-hellboy/agent-hellboy-formula/echo-mail
+
+      - name: Brew Audit
+        run: brew audit --strict agent-hellboy/agent-hellboy-formula/echo-mail
+
+      - name: Brew Style
+        run: brew style agent-hellboy/agent-hellboy-formula/echo-mail
