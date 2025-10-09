@@ -23,7 +23,10 @@ class Ipurity < Formula
 
     # Create a build directory and run CMake from there.
     mkdir "build" do
-      system "cmake", "..", *std_cmake_args
+      system "cmake", "..", *std_cmake_args,
+             "-DCMAKE_PREFIX_PATH=#{Formula["libimobiledevice"].opt_prefix}",
+             "-DCMAKE_LIBRARY_PATH=#{Formula["libimobiledevice"].opt_lib}",
+             "-DCMAKE_INCLUDE_PATH=#{Formula["libimobiledevice"].opt_include}"
       system "cmake", "--build", "."
       system "cmake", "--install", "."
     end
