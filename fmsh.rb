@@ -12,18 +12,10 @@ class Fmsh < Formula
     on_intel do
       url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_darwin_amd64.tar.gz"
       sha256 "4300afcaa2ddd05a6d4eafba725e8c0e1674aa39f745eb8c6b6e6d3aef8cba85"
-
-      def install
-        bin.install "fmsh"
-      end
     end
     on_arm do
       url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_darwin_arm64.tar.gz"
       sha256 "dfeb7d48315212dae57c726cfa50cbe1d2685b1cd7622d1797f0c841e9f371ab"
-
-      def install
-        bin.install "fmsh"
-      end
     end
   end
 
@@ -32,22 +24,18 @@ class Fmsh < Formula
       if Hardware::CPU.is_64_bit?
         url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_linux_amd64.tar.gz"
         sha256 "c29568f509981b9c013f0d9a749cd1e225c6e66eba404fd594d459cb731e3a70"
-
-        def install
-          bin.install "fmsh"
-        end
       end
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_linux_arm64.tar.gz"
         sha256 "3574a9a102d8629dfb9e5dec6955e4c0a998d2f8e2c7482ab5461bd96afaf2b0"
-
-        def install
-          bin.install "fmsh"
-        end
       end
     end
+  end
+
+  def install
+    bin.install "fmsh"
   end
 
   test do
