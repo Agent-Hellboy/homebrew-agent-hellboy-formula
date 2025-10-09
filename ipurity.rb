@@ -13,9 +13,9 @@ class Ipurity < Formula
   depends_on "opencv"
 
   def install
-    # Set environment variables for libimobiledevice
-    ENV["PKG_CONFIG_PATH"] = "#{Formula["libimobiledevice"].opt_lib}/pkgconfig"
-    ENV["CMAKE_PREFIX_PATH"] = "#{Formula["libimobiledevice"].opt_prefix}:#{ENV["CMAKE_PREFIX_PATH"]}"
+    # Set environment variables for dependencies
+    ENV["PKG_CONFIG_PATH"] = "#{Formula["libimobiledevice"].opt_lib}/pkgconfig:#{Formula["opencv"].opt_lib}/pkgconfig"
+    ENV["CMAKE_PREFIX_PATH"] = "#{Formula["libimobiledevice"].opt_prefix}:#{Formula["opencv"].opt_prefix}:#{ENV["CMAKE_PREFIX_PATH"]}"
 
     # Patch the configure script so that the symlink directory is not /opt/homebrew/lib,
     # but instead your formula's lib directory. This allows symlink creation without
