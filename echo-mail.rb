@@ -11,12 +11,10 @@ class EchoMail < Formula
   depends_on "go"
   depends_on :macos
 
-  on_arm do
+  if Hardware::CPU.arm?
     url "https://github.com/Agent-Hellboy/echomail/releases/download/v0.1.0/echo-mail_0.1.0_darwin_arm64.tar.gz"
     sha256 "b90dd08ff3c991d09cb3811c978826506e55dae75cf8bf17ac2342e50a8d22ba"
-  end
-
-  on_intel do
+  else
     url "https://github.com/Agent-Hellboy/echomail/releases/download/v0.1.0/echo-mail_0.1.0_darwin_amd64.tar.gz"
     sha256 "8aa06eebfca7d6ef4ac0045a81be1257575b06d28f2dbce070b0f5b6835707ec"
   end
@@ -26,6 +24,6 @@ class EchoMail < Formula
   end
 
   test do
-    system "#{bin}/echo-mail", "--version"
+    system bin/"echo-mail", "--version"
   end
 end

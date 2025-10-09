@@ -9,28 +9,22 @@ class Fmsh < Formula
   license "GPL-3.0-only"
 
   on_macos do
-    on_intel do
-      url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_darwin_amd64.tar.gz"
-      sha256 "4300afcaa2ddd05a6d4eafba725e8c0e1674aa39f745eb8c6b6e6d3aef8cba85"
-    end
-    on_arm do
+    if Hardware::CPU.arm?
       url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_darwin_arm64.tar.gz"
       sha256 "dfeb7d48315212dae57c726cfa50cbe1d2685b1cd7622d1797f0c841e9f371ab"
+    else
+      url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_darwin_amd64.tar.gz"
+      sha256 "4300afcaa2ddd05a6d4eafba725e8c0e1674aa39f745eb8c6b6e6d3aef8cba85"
     end
   end
 
   on_linux do
-    on_intel do
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_linux_amd64.tar.gz"
-        sha256 "c29568f509981b9c013f0d9a749cd1e225c6e66eba404fd594d459cb731e3a70"
-      end
-    end
-    on_arm do
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_linux_arm64.tar.gz"
-        sha256 "3574a9a102d8629dfb9e5dec6955e4c0a998d2f8e2c7482ab5461bd96afaf2b0"
-      end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_linux_arm64.tar.gz"
+      sha256 "3574a9a102d8629dfb9e5dec6955e4c0a998d2f8e2c7482ab5461bd96afaf2b0"
+    elsif Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/Agent-Hellboy/fmsh/releases/download/v0.1.4/fmsh_0.1.4_linux_amd64.tar.gz"
+      sha256 "c29568f509981b9c013f0d9a749cd1e225c6e66eba404fd594d459cb731e3a70"
     end
   end
 
@@ -40,6 +34,6 @@ class Fmsh < Formula
 
   test do
     # Simple test: verify that fmsh returns its version
-    assert_match "fmsh", shell_output("#{bin}/fmsh --version")
+    assert_match "fmsh", shell_output(bin/"fmsh --version")
   end
 end
