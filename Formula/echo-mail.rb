@@ -5,18 +5,18 @@
 class EchoMail < Formula
   desc "Email Audio Reader for macOS"
   homepage "https://github.com/Agent-Hellboy/echomail"
-  version "0.1.0"
+  version "0.1.1"
   license "MIT"
 
   depends_on "go"
   depends_on :macos
 
   if Hardware::CPU.arm?
-    url "https://github.com/Agent-Hellboy/echomail/releases/download/v0.1.0/echo-mail_0.1.0_darwin_arm64.tar.gz"
-    sha256 "b90dd08ff3c991d09cb3811c978826506e55dae75cf8bf17ac2342e50a8d22ba"
+    url "https://github.com/Agent-Hellboy/echomail/releases/download/v0.1.1/echo-mail_0.1.1_darwin_arm64.tar.gz"
+    sha256 "0000f55e0947ff01ec8610ce9149d5eb86f4b3ad3c0d1d3591d0cef304d3937d"
   else
-    url "https://github.com/Agent-Hellboy/echomail/releases/download/v0.1.0/echo-mail_0.1.0_darwin_amd64.tar.gz"
-    sha256 "8aa06eebfca7d6ef4ac0045a81be1257575b06d28f2dbce070b0f5b6835707ec"
+    url "https://github.com/Agent-Hellboy/echomail/releases/download/v0.1.1/echo-mail_0.1.1_darwin_amd64.tar.gz"
+    sha256 "1979c1fc966a9be116188965332d80673bd2c983e2dabd4cc45e559dc10b6602"
   end
 
   def install
