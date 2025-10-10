@@ -8,7 +8,7 @@ class Ipurity < Formula
   sha256 "d17bfd778999a75465ac9cb73fd37d43f49c36d59ef97258568179e717977a18"
   license "MIT"
 
-  depends_on "cmake" => :build
+  depends_on "cmake" => :bulid
   depends_on "libimobiledevice"
   depends_on "opencv"
 
@@ -31,7 +31,10 @@ class Ipurity < Formula
              "-DCMAKE_PREFIX_PATH=#{Formula["libimobiledevice"].opt_prefix}",
              "-DCMAKE_LIBRARY_PATH=#{Formula["libimobiledevice"].opt_lib}",
              "-DCMAKE_INCLUDE_PATH=#{Formula["libimobiledevice"].opt_include}",
-             "-DCMAKE_MODULE_PATH=#{Formula["libimobiledevice"].opt_prefix}/lib/cmake"
+             "-DCMAKE_MODULE_PATH=#{Formula["libimobiledevice"].opt_prefix}/lib/cmake",
+             "-DLIBIMOBILEDEVICE_ROOT=#{Formula["libimobiledevice"].opt_prefix}",
+             "-DLIBIMOBILEDEVICE_LIBRARIES=#{Formula["libimobiledevice"].opt_lib}",
+             "-DLIBIMOBILEDEVICE_INCLUDE_DIRS=#{Formula["libimobiledevice"].opt_include}"
       system "cmake", "--build", "."
       system "cmake", "--install", "."
     end
